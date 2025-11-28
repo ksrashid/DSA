@@ -19,14 +19,18 @@ public class Main {
     System.out.println();
     //myLinkedList.reverseList();
     //myLinkedList.printList();
-    System.out.println("value at index 1: " + myLinkedList.get(1).value);
+    // System.out.println("value at index 1: " + myLinkedList.get(1).value);
+    // myLinkedList.printList();
+    // myLinkedList.set(1, 18);
+    // System.out.println("value at index 1: " + myLinkedList.get(1).value);
+    // myLinkedList.printList();
+    // myLinkedList.insert(myLinkedList.getLen(), 19);
+    // System.out.println("After insert: ");
+
+    System.out.println("Remove node at index 0: " + myLinkedList.remove(0).value);
     myLinkedList.printList();
-    myLinkedList.set(1, 18);
-    System.out.println("value at index 1: " + myLinkedList.get(1).value);
-    myLinkedList.printList();
-    myLinkedList.insert(myLinkedList.getLen(), 19);
-    System.out.println("After insert: ");
-    myLinkedList.printList();
+
+    
   }
 
 }

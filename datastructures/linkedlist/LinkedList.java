@@ -61,8 +61,8 @@ public class LinkedList {
 
       if (idx == 0) {
         prepend(value);
-      } else if (idx == length) {
-          append(value);
+      } else if (idx == length - 1) {
+        append(value);
       } else {
         Node newInsert = new Node(value);
         int i = 0;
@@ -70,7 +70,26 @@ public class LinkedList {
         newInsert.next = temp.next;
         temp.next = newInsert;
       }
+      length++;
     return true;
+  }
+
+  public Node remove(int idx) {
+    if (idx < 0 || idx > length)
+      return null;
+    Node result;
+    if (idx == 0) {
+      result = removeFirst();
+    } else if (idx == length - 1) {
+      result = removeLast();
+    } else {
+      Node prev = get(idx -1);
+      result = prev.next;
+      prev.next = result.next;
+      result.next = null;
+    }
+    length--;
+    return result;    
   }
   
   public Node removeLast() {
@@ -143,33 +162,20 @@ public class LinkedList {
   }
   
   public void reverseList() {
-    // head -> node -> node -> tail -> null
-    // 1 2 3 4 5
     if (length > 1) {
       Node temp;
-      Node first = head; // 1
+      Node first = head;
       Node second = first.next;
       first.next = null;
-      // 1 -> null
-      // 2 -> 3 -> 4 -> 5 -> null
   
-
-      // first = 1
-      // sec = 2
-      // sec.next starts at 3
       while (second.next != null) {
         temp = second.next;   // 3    // 4  // 5
         
         second.next = first;  // 1    // 2  // 3
         first = second;       // 2    // 3  // 4
-        
-        // 2 -> 1 -> null 
-
         second = temp;        // 3    // 4  // 5
-        // 3 -> 4 -> 5 -> null 
       }
       second.next = first;
-
       temp = head;
       head = tail;
       tail = temp;
